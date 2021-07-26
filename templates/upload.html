@@ -1,0 +1,31 @@
+<!doctype html>
+<title>Encryptado de archivos Mulesoft</title>
+<h2>Seleccione si desea encriptar o desencriptar y suba el archivo (recuerde que debe ser un archivo con extension "YAML")</h2>
+<p>
+	{% with messages = get_flashed_messages() %}
+	  {% if messages %}
+		<ul class=flashes>
+		{% for message in messages %}
+		  <li>{{ message }}</li>
+		{% endfor %}
+		</ul>
+	  {% endif %}
+	{% endwith %}
+</p>
+<form method="post" action="/" enctype="multipart/form-data">
+    <dl>
+		<p>
+			<input type="file" name="file" autocomplete="off" required>
+		</p>
+    </dl>
+    <p>
+		<input type="submit" value="Submit">
+	</p>
+	<select name = "method_cipher" id = "method_cipher">
+		<option value="Encrypt">Encriptar</option>
+		<option value="Decrypt">Desencriptar</option>
+		<option value="Encrypt2">Encriptar con llave</option>
+	</select>
+		<label for="name">Clave de encriptacion (solo para desencriptar): </label>
+		<input type="text" id="ek" name="ek" /><br>
+</form>
